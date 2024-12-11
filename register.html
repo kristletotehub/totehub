@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homepage</title>
+    <!-- Font Awesome Link for Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        /* Modal Styling */
+        .modal {
+            display: none; /* Initially hidden */
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000; /* Keeps modal above all other elements */
+        }
+
+        .modal-content {
+            background-color: beige;
+            padding: 30px;
+            border-radius: 8px;
+            width: 400px;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .modal h2 {
+            margin-bottom: 30px;
+        }
+
+        .close-btn {
+            position: absolute; /* Position the button absolutely */
+            top: 3px;
+            left: 360px;
+            font-size: 20px; /* Increase font size for better visibility */
+            background: none; /* Remove background */
+            border: none; /* Remove any border */
+            color: #333; /* Set color for the X button */
+            cursor: pointer;
+        }
+
+        .close-btn:hover {
+            color: gray; /* Change color on hover for better visual feedback */
+        }
+
+        .close-btn:active {
+            transform: scale(0.9); 
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+        /* Update the .form-group to align the label and input horizontally */
+.form-group {
+    margin-bottom: 15px;
+    display: flex; /* Use flexbox to align label and input */
+    align-items: center; /* Vertically center the label and input */
+}
+
+/* Style the labels to make sure they take up proper space */
+label {
+    width: 120px; /* Adjust width as needed */
+    margin-right: 10px; /* Space between label and input */
+     /* Optional: Make label text bold */
+}
+
+/* Inputs should still be 100% width, but aligned horizontally */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="date"] {
+    flex-grow: 1; /* Makes the input take up remaining space */
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+    background-color: #fff;
+}
+button {
+        width: 30%;
+        padding: 10px;
+        background-color: #4CAF50; /* Green */
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        text-align: center;
+    }
+
+    .message {
+        text-align: center;
+        margin-top: 15px;
+    }
+
+    .message a {
+        color: rgb(23, 92, 241);
+        text-decoration: none;
+    }
+
+    .message a:hover {
+        text-decoration: underline;
+    }
+
+
+
+         /* General Body Styles */
+         body {
+            font-style: italic;
+            margin: 0;
+            padding: 0;
+            background-color: antiquewhite;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Container Styles */
+        .container {
+            background-color: #e2d0b5;
+            flex-grow: 1;
+        }
+
+        /* Header Styles */
+        .header {
+            background-color: #dc9c88;
+            color: #070707;
+            padding: 15px 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            text-align: center;
+            position: relative; /* To position search bar */
+        }
+
+        .header img {
+            width: 100px;
+            height: auto;
+        }
+
+        .header h1 {
+            margin: 0;
+        }
+
+        /* Search Bar Styles */
+        .search-bar {
+            position: absolute;
+            right: 20px;
+            display: flex;
+            align-items: center;
+            background-color: white;
+            border-radius: 5px;
+            padding: 2px 2px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            margin-top: 4px;
+        }
+
+        .search-bar input {
+            border: none;
+            outline: none;
+            padding: 5px;
+            font-size: 1rem;
+            border-radius: 5px;
+            width: 200px;
+        }
+
+        .search-bar button {
+            background-color: #dc9c88;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-left: 5px;
+        }
+
+        .search-bar button:hover {
+            background-color: #c8836b;
+        }
+
+        /* Navigation Bar Styles */
+        .nav {
+            display: flex;
+            justify-content: center;
+            background-color: rgb(62, 60, 60);
+        }
+
+        .nav a {
+            color: beige;
+            padding: 14px 20px;
+            text-decoration: none;
+            text-align: center;
+            display: flex;
+            align-items: center;
+        }
+
+        .nav a i {
+            margin-right: 8px; /* Space between icon and text */
+        }
+
+        .nav a:hover {
+            background-color: #555555cb;
+        }
+
+        /* Footer Styles */
+        .footer {
+            background-color: #dc9c88;
+            color: black;
+            text-align: center;
+            padding: 10px 0;
+            position: relative;
+            width: 100%;
+            margin-top: 95px;
+            flex-shrink: 0;
+        }
+
+        /* Carousel Styles */
+        #outerbox {
+            width: 310px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        #sliderbox {
+            position: relative;
+            width: 9192px;
+            animation-name: slider;
+            animation-duration: 20s;
+            animation-iteration-count: infinite;
+        }
+
+        #sliderbox img {
+            width: 300px;
+            height: 380px;
+            float: left;
+            margin-right: 10px;
+            margin-top: 30px;
+            display: flex;
+        }
+
+        @keyframes slider {
+            0% { left: 0px; }
+            11% { left: -310px; }
+            22% { left: -620px; }
+            33% { left: -930px; }
+            44% { left: -1240px; }
+            55% { left: -1550px; }
+            66% { left: -1850px; }
+            77% { left: -2170px; }
+            88% { left: -2485px; }
+            100% { left: -2800px; }
+        }
+
+        /* Make the layout responsive */
+        @media screen and (max-width: 1000px) {
+            .container {
+                margin: 0 20px;
+            }
+
+            .header {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .nav {
+                flex-direction: column;
+            }
+
+            .nav a {
+                padding: 10px 0;
+                text-align: left;
+                width: 100%;
+            }
+
+            #outerbox {
+                width: 100%;
+                margin-left: 0;
+            }
+
+            #sliderbox img {
+                width: 100%;
+                height: auto;
+                margin-right: 100px;
+                margin-bottom: 0;
+            }
+        }
+
+        /* About Section Styling */
+        .about {
+            padding: 20px;
+            text-align: center;
+            background-color: none;
+            max-width: 700px;
+            margin-right: 50px; /* Give space between carousel and about section */
+        }
+
+        .about h2 {
+            font-size: 2.0rem;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .about p {
+            font-size: 1.3rem;
+            color: #555;
+            line-height: 1.8;
+            margin-bottom: 15px;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Main Content Styles */
+        .main-content {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px;
+            align-items: flex-start;
+            margin-left: 100px;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Modal Login -->
+<div class="modal" id="login-modal">
+    <div class="modal-content">
+        <h2>Registration</h2>
+        <!-- Close Button -->
+        <button class="close-btn" id="close-btn">X</button>
+        
+        <!-- Registration Form -->
+        <form id="registration-form">
+            <div class="form-group">
+                <label for="email">Email Address:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="username">Name:</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            <div class="form-group">
+                <label for="lastname">Last Name:</label>
+                <input type="text" id="lastname" name="lastname" required>
+            </div>
+            <div class="form-group">
+                <label for="birthday">Birthday:</label>
+                <input type="date" id="birthday" name="birthday" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <button type="submit">Save</button> <!-- This is now a submit button -->
+        </form>
+        <p class="message">Already have an account? <a href="Login.html">Login</a></p>
+    </div>
+</div>
+<div class="container">
+    <div class="header">
+        <img src="Untitled design.png" alt="Tote Hub Logo">
+        <h1>Tote Hub</h1>
+    </div>
+
+    <div class="nav">
+        <a href="#"><i class="fas fa-home"></i>Home</a>
+        <a href="3d.html"><i class="fas fa-shopping-bag"></i>Product</a>
+        <a href="portfolio.html"><i class="fas fa-info-circle"></i>About</a>  
+        <a href="login.html"><i class="fas fa-sign-in-alt"></i>Log in</a>
+        <div class="search-bar">
+            <input type="text" placeholder="Search products...">
+            <button><i class="fas fa-search"></i></button>
+        </div>
+    </div>
+
+    <main>
+        <div class="main-content">
+            <!-- Carousel Section (Now on the left side) -->
+            <div class="carousel">
+                <div id="outerbox">
+                    <div id="sliderbox">
+                        <img src="product/sling 1.jpg" alt="Product 1"/>
+                        <img src="product/sling 5.jpg" alt="Product 2"/>
+                        <img src="product/travel 5.jpg" alt="Product 3"/>
+                        <img src="product/travel 6.jpg" alt="Product 4"/>
+                        <img src="product/travel 9.jpg" alt="Product 5"/>
+                        <img src="product/Shoulder 7.jpg" alt="Product 6"/>
+                        <img src="product/shoulder 3.jpg" alt="Product 7"/>
+                        <img src="product/sling 2.jpg" alt="Product 8"/>
+                        <img src="product/sling 10.jpg" alt="Product 9"/>
+                        <img src="product/travel 8.jpg" alt="Product 10"/>
+                    </div>
+                </div>
+            </div>
+
+            <!-- About Section (Now on the right side) -->
+            <section class="about">
+                <h2>Welcome to Tote Hub!</h2>
+                <p>At Tote Hub, we specialize in offering a wide variety of bags designed to meet your every need. Whether you're looking for a stylish sling bag, a durable travel bag, or a spacious shoulder bag, we have something perfect for every occasion. Our bags are made with high-quality materials, ensuring that you get both style and functionality.</p>
+                <p>Explore our collection of trendy and practical bags that make your day-to-day life easier and more fashionable. From casual outings to traveling, Tote Hub has the right bag for you.</p>
+            </section>
+        </div>
+    </main>
+
+    <div class="footer">
+        <p>&copy;2024 Tote Hub. All Rights Reserved</p>
+    </div>
+<script>
+    // Handling Modal Logic
+    const loginModal = document.getElementById("login-modal");
+    const closeModal = document.getElementById("close-btn");
+
+    // Show the modal on page load
+    window.onload = function () {
+        loginModal.style.display = "flex"; // Show the modal
+    };
+
+    // Close modal when the close button is clicked
+    closeModal.addEventListener("click", function () {
+        loginModal.style.display = "none"; // Hide modal
+    });
+
+    // Handle form submission
+    const registrationForm = document.getElementById('registration-form');
+    registrationForm.addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevent default form submission to handle it manually
+
+        // Capture form data
+        const formData = new FormData(registrationForm);
+        const formObject = {};
+        formData.forEach((value, key) => {
+            formObject[key] = value;
+        });
+
+        console.log(formObject); // Log form data (for testing purposes)
+        
+        // You can add a server request (AJAX/fetch) or other logic here
+        
+        // Example alert for successful form submission
+        alert('Registration Successful!');
+    });
+</script>
+
+</body>
+</html>

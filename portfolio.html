@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio Page</title>
+  <style>
+    /* General Styles */
+    body {
+      font-style: italic;
+      margin: 0;
+      padding: 0;
+      background-color: antiquewhite;
+    }
+
+    /* Header Section */
+    .header {
+      text-align: center;
+      padding: 20px 20px;
+      background-color: #dc9c88;
+    }
+
+    .header h1 {
+      font-size: 28px;
+      color: #333;
+      margin-bottom: 20px;
+    }
+
+    .discover-btn {
+      background-color: antiquewhite;
+      color: black;
+      border: none;
+      padding: 10px 20px;
+      font-size: 16px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .discover-btn:hover {
+      background-color: blanchedalmond;
+    }
+
+    /* Navigation Bar */
+    .navbar {
+      background-color: #333;
+      padding: 10px 0;
+    }
+
+    .navbar ul {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      margin: 0;
+      padding: 0;
+    }
+
+    .navbar ul li {
+      margin: 0 15px;
+    }
+
+    .navbar ul li a {
+      color: white;
+      text-decoration: none;
+      font-size: 16px;
+    }
+
+    .navbar ul li a:hover {
+      text-decoration: underline;
+    }
+
+    /* Section Styles */
+    .about-section, .favorites-section, .contact-section {
+      text-align: center;
+      padding: 40px 20px;
+    }
+
+    .about-section h2, .favorites-section h2, .contact-section h2 {
+      font-size: 24px;
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    /* Favorites Section */
+    .favorites {
+      display: flex;
+      justify-content: center;
+      gap: 50px;
+      flex-wrap: wrap; /* Allow wrapping on smaller screens */
+      margin-top: 20px;
+    }
+
+    .favorite-item {
+      background-color:  #dc9c88;
+      width: 150px;
+      height: 150px;
+      border-radius: 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.3s ease-in-out; /* Smooth transition for scaling */
+      text-align: center;
+      padding: 10px;
+    }
+
+    .favorite-item h3 {
+      font-size: 16px;
+      margin-bottom: 10px;
+      color: #333;
+    }
+
+    .favorite-item img {
+      width: 100px; /* Adjust the image size */
+      height: 100px;
+      object-fit: cover; /* Ensure the image fits the space properly */
+      border-radius: 5px;
+    }
+
+    .favorite-item:hover {
+      transform: scale(1.2); /* Zoom in on hover */
+    }
+
+    /* Footer */
+    .footer {
+      background-color: #dc9c88;
+      color: black;
+      text-align: center;
+      padding: 10px 0;
+      margin-top: 20px;
+    }
+
+    /* Back Button */
+    .back-btn {
+      background-color: #333;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      font-size: 16px;
+      border-radius: 5px;
+      cursor: pointer;
+      position: fixed;
+      top: 20px;
+      left: 20px;
+    }
+
+    .back-btn:hover {
+      background-color: #555;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>Hello, I'm Kristle</h1>
+    <a href="#about"><button class="discover-btn">Discover More</button></a>
+  </div>
+
+  <nav class="navbar">
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#favorites">My Favorites</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+ <!-- Back Button (Link to a specific page) -->
+<a href="index.html">
+  <button class="back-btn">Back</button>
+</a>
+
+  <section id="about" class="about-section">
+    <h2>About Me</h2>
+    <p>"I'm Kristle, a passionate individual who loves exploring 
+      <br>new ideas and helping others with creativity. 
+        Whether it's through writing, <br>art, or simply being a good listener,
+      I aim to bring positivity <br>and inspiration into every space I enter."</p>
+  </section>
+
+  <section id="favorites" class="favorites-section">
+    <h2>My Favorites</h2>
+    <div class="favorites">
+      <div class="favorite-item">
+        <h3>Playing Games</h3>
+        <p>Candy Crush</p>
+        <p>Plants vs. Zombies</p>
+      </div>
+      <div class="favorite-item">
+        <h3>Watching Movies</h3>
+        <p>Action Movies</p>
+        <p>Comedy Films</p>
+      </div>
+      <div class="favorite-item">
+        <h3>Listening to Music</h3>
+        <p>Pop Music</p>
+        <p>Indie Rock</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="contact-section">
+    <h2>Contact Me</h2>
+    <p>Facebook: Kristle Keith A. Bermudez</p>
+    <p> Contact:09457200818</p>
+    <p>Email: kristlelkeithbermudez10@gmail.com</p>
+  </section>
+
+  <footer class="footer">
+    <p>@2024 All Rights Reserved</p>
+  </footer>
+</body>
+</html>
